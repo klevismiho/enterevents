@@ -1,0 +1,5 @@
+{
+    "require": {
+        "rpay\/pokpay-payments-sdk": "^1.2"
+    }
+}

@@ -1,0 +1,35 @@
+# Local by Flywheel
+logs/
+conf/
+*.sql
+
+# Environment-specific config
+wp-config.php
+wp-config-local.php
+wp-config-prod.php
+wp-config-staging.php
+.env
+
+# WordPress core (optional if you don’t want to track full WP core)
+wp-admin/
+wp-includes/
+
+# Uploads
+app/public/wp-content/uploads/
+
+# Cache
+app/public/wp-content/cache/
+
+# Plugins you don’t want to version (optional)
+app/public/wp-content/plugins/*-cache*/
+app/public/wp-content/plugins/*-backup*/
+
+# Node
+node_modules/
+
+# Composer
+vendor/
+
+# System files
+.DS_Store
+Thumbs.db

@@ -30,6 +30,8 @@ node_modules/
 # Composer
 vendor/
 
+**/debug.log
+
 # System files
 .DS_Store
 Thumbs.db

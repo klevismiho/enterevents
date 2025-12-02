@@ -1,0 +1,53 @@
+.section-hero {
+    padding: 2rem 0;
+    background-image: url(images/hero.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: $white;
+    text-align: center;
+    position: relative;
+
+    @include breakpoint(small) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50vh;
+    }
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: $black;
+        opacity: 0.9;
+        z-index: 1;
+    }
+
+    .container {
+        z-index: 2;
+    }
+
+    h1 {
+        margin: 0;
+        mix-blend-mode: color-dodge;
+
+        @include breakpoint(small) {
+            font-size: 4rem;
+        }
+    }
+
+    p {
+        @include breakpoint(small) {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.6rem;
+        }
+    }
+
+    .buttons {
+        margin-top: 2rem;
+    }
+}

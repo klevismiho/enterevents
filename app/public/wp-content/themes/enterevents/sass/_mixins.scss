@@ -1,0 +1,37 @@
+// Media queries
+$size__small: 800px;
+$size__medium: 1024px;
+$size__large: 1320px;
+$size__xlarge: 1600px;
+
+@mixin breakpoint($size) {
+    @if $size ==small-only {
+        @media (max-width: $size__small) {
+            @content;
+        }
+    }
+
+    @else if $size ==small {
+        @media (min-width: $size__small) {
+            @content;
+        }
+    }
+
+    @else if $size ==medium {
+        @media (min-width: $size__medium) {
+            @content;
+        }
+    }
+
+    @else if $size ==large {
+        @media (min-width: $size__large) {
+            @content;
+        }
+    }
+
+    @else if $size ==xlarge {
+        @media (min-width: $size__xlarge) {
+            @content;
+        }
+    }
+}

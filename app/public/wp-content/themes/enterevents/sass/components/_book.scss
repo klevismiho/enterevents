@@ -1,0 +1,24 @@
+.section-book {
+    margin: 4rem 0;
+    padding: 2rem;
+    background-color: #1a1a1a;
+    color: $white;
+    border-radius: 20px;
+
+    @include breakpoint(small) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .inner-content {
+        h2 {
+            margin: 0;
+        }
+    }
+
+    .button {
+        width: auto;
+        white-space: nowrap;
+    }
+}

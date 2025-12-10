@@ -1,7 +1,6 @@
 // WooCommerce Cart Page Styles
 body.woocommerce-cart {
     color: $white;
-    padding: 2rem 0;
 
     .woocommerce table.shop_table_responsive tr td::before,
     .woocommerce-page table.shop_table_responsive tr td::before {
@@ -281,9 +280,6 @@ body.woocommerce-cart {
 
     // Cart collaterals (Cart totals section)
     .cart-collaterals {
-        display: grid;
-        gap: 2rem;
-
         @include breakpoint(small) {
             grid-template-columns: 1fr 400px;
         }
@@ -435,6 +431,10 @@ body.woocommerce-cart {
                 }
             }
         }
+    }
+    
+    .efw-gateway-fee-desc-popup {
+        display: none;
     }
 
     // Mobile responsive adjustments

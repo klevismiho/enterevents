@@ -1,11 +1,6 @@
 // WooCommerce Checkout Page Styles
 .woocommerce-checkout {
   color: $white;
-  padding: 2rem 0;
-
-  @media (max-width: 767px) {
-    padding: 1rem 0;
-  }
 
   // Main checkout form
   form.checkout {
@@ -491,6 +486,10 @@
         }
       }
     }
+  }
+
+  .efw-gateway-fee-desc-popup {
+    display: none;
   }
 
   // Coupon form

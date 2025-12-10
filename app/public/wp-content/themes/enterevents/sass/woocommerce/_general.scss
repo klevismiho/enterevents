@@ -1,7 +1,28 @@
 .woocommerce-error,
 .woocommerce-info,
 .woocommerce-message {
+    padding: 1rem;
     background: transparent;
     color: $white;
     border: 1px solid $white;
+
+    .button {
+        display: inline-block !important;
+        padding: 0.6rem 1.3rem !important;
+        background-color: $primary-color !important;
+        color: $black !important;
+        font-weight: normal !important;
+        text-decoration: none !important;
+        border-radius: 30px !important;
+        transition: .15s all !important;
+        @include breakpoint(small-only) {
+            display: block !important;
+            margin-top: 1rem !important;
+        }
+
+        &:hover {
+            background-color: $white;
+            color: $black !important;
+        }
+    }
 }

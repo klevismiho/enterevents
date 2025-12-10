@@ -67,26 +67,6 @@
               if (!empty($event_email)) {
                 echo '<p><strong>Email: </strong>' . esc_html($event_email) . '</p>';
               }
-
-              // Check for custom product attributes
-              $product_attributes = get_post_meta($post_id, '_product_attributes', true);
-              if (is_array($product_attributes)) {
-                // Location (if not already shown)
-                if (isset($product_attributes['location']) && !empty($product_attributes['location']['value']) && empty($event_venue)) {
-                  echo '<p><strong>Location: </strong>' . esc_html($product_attributes['location']['value']) . '</p>';
-                }
-
-                // Days (if available)
-                if (isset($product_attributes['days']) && !empty($product_attributes['days']['value'])) {
-                  echo '<p><strong>Days: </strong>' . esc_html($product_attributes['days']['value']) . '</p>';
-                }
-
-                // Any other attributes you want to display
-                // For example:
-                if (isset($product_attributes['type']) && !empty($product_attributes['type']['value'])) {
-                  echo '<p><strong>Type: </strong>' . esc_html($product_attributes['type']['value']) . '</p>';
-                }
-              }
               ?>
             </div>
           <?php endif; ?>

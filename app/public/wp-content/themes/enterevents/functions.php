@@ -28,7 +28,7 @@ function ee_scripts() {
     wp_enqueue_script( 'swiper', 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js', array(), true);
     wp_enqueue_script( 'ee-scripts', get_stylesheet_directory_uri(). '/js/app.js', array(), '1.0.2', true );
     wp_enqueue_style( 'google-fonts-ee', 'https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;700&display=swap' );
-    wp_enqueue_style( 'ee-style', get_stylesheet_directory_uri(). '/style.css', [], '1.0.8' );
+    wp_enqueue_style( 'ee-style', get_stylesheet_directory_uri(). '/style.css', [], '1.0.9' );
 
     if(is_product()) {
         wp_enqueue_script( 'lity', get_stylesheet_directory_uri(). '/js/lity.min.js', array('jquery'), '', true );

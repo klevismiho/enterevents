@@ -52,7 +52,7 @@
 </footer>
 
 <?php wp_footer(); ?>
-Test
+
 </body>
 
 </html>

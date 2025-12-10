@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: $font-main;
     background-color: $black;
@@ -39,18 +43,22 @@ hr {
     background-color: $primary-color;
     color: $black !important;
     text-decoration: none;
-    font-weight: 700;
     border-radius: 30px;
-    transition: .1s all;
+    transition: .15s all;
 
     &:hover {
-        transform: scale(1.03);
+        background-color: $white;
+        color: $black !important;
     }
 
     &.secondary {
         background-color: transparent;
         color: $white !important;
         border: 1px solid $white;
+        &:hover {
+            background-color: $white;
+            color: $black !important;
+        }
     }
 }
 

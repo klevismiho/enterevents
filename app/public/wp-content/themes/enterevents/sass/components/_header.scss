@@ -173,17 +173,18 @@
 
                     @include breakpoint(small) {
                         display: inline-block;
-                        padding: 1rem 2rem;
+                        padding: 0.6rem 1.4rem;
                         background-color: transparent;
-                        color: $white !important;
+                        color: $white;
                         text-decoration: none;
                         border-radius: 30px;
                         transition: .1s all;
                         border: 1px solid $white;
-                        font-weight: 700;
+                        transition: .14s all;
 
                         &:hover {
-                            transform: scale(1.03);
+                            background-color: $white;
+                            color: $black;
                         }
                     }
                 }

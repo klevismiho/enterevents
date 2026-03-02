@@ -32,10 +32,18 @@
 
     h1 {
         margin: 0;
-        mix-blend-mode: color-dodge;
+        font-weight: 500;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+        background-image: url(images/hero.webp);
+        background-size: cover;
+        background-position: center;
+        -webkit-background-clip: text;
+        background-clip: text;
 
         @include breakpoint(small) {
-            font-size: 4rem;
+            font-size: 5rem;
+            letter-spacing: 6px;
         }
     }
 
@@ -49,5 +57,9 @@
 
     .buttons {
         margin-top: 2rem;
+        align-items: center;
+        .button {
+            width: 260px;
+        }
     }
 }

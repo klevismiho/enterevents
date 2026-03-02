@@ -1,0 +1,16 @@
+.woocommerce ul.order_details {
+    padding: 0;
+    margin: 0;
+}
+
+.woocommerce table.shop_table {
+    th {
+        padding: 0;
+    }
+    td {
+        padding: 9px 0;
+        a {
+            color: $white;
+        }
+    }
+}

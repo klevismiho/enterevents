@@ -5,15 +5,57 @@
         <main class="main-content">
             <div class="container">
                 <article class="single-post-article">
-                    <h1><?php the_title(); ?></h1>
-                    <?php the_content(); ?>
+                    <figure class="single-post-article-featured-image">
+                        <?php the_post_thumbnail(); ?>
+                    </figure>
+                    <div class="single-post-article-content">
+                        <div class="article-content">
+                            <h1><?php the_title(); ?></h1>
+                            <div class="post-meta">
+                                Posted by <?php the_author(); ?> on
+                                <time datetime="<?php echo get_the_date('c'); ?>">
+                                    <?php echo get_the_date(); ?>
+                                </time>
+                            </div>
+                            <?php the_content(); ?>
+                        </div>
+                        <aside class="sidebar">
+                            <div class="widget-author">
+                                <div class="author-header">
+
+                                    <?php
+                                    $author_id = get_the_author_meta('ID');
+                                    $image = get_field('profile_picture', 'user_' . $author_id);
+                                    if ($image) {
+                                       echo '<img src="' . esc_url($image['url']) . '" alt="' . esc_attr(get_the_author()) . '" width="96" height="96" />';
+                                    } else {
+                                        echo get_avatar($author_id, 96);
+                                    }
+                                    ?>
+
+                                    <div class="author-meta">
+                                        <h5><?php the_author(); ?></h5>
+                                        <h6><?php the_field('title', 'user_' . $author_id); ?></h6>
+                                    </div>
+                                </div>
+
+                                <p><?php the_author_meta('description'); ?></p>
+                            </div>
+                            <!-- <div class="widget-ads">
+     
+                            </div> -->
+                        </aside>
+
+                    </div>
                 </article>
             </div>
         </main>
 
         <section class="section-latest-posts">
             <div class="container">
-                <h2>More from magazine</h2>
+                <header class="section-header">
+                    <h2>More from the Magazine</h2>
+                </header>
                 <div class="posts-grid">
                     <?php
                     $latest_posts = new WP_Query(array(

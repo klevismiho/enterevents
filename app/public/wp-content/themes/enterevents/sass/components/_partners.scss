@@ -1,13 +1,14 @@
 .section-partners {
+    margin-top: 4rem;
     padding: 3rem 0 4rem 0;
     color: $white;
-    border-top: 1px solid $white;
 
     .section-header {
         h2 {
             text-align: center;
             font-size: 2.5rem;
-            color: $white;
+            font-weight: 500;
+            color: $primary-color;
             margin-top: 0;
         }
 
@@ -30,8 +31,7 @@
         .item {
             display: flex;
             align-items: center;
-            padding: 2rem;
-            border: 1px solid $white;
+            padding: 1rem;
 
             img {
                 width: 100%;

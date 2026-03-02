@@ -44,9 +44,11 @@
             </div>
 
         </div>
-
+        <div class="footer-slogan">
+            MADE TO AMAZE
+        </div>
         <div class="footer-bottom">
-            <p>© 2025 Enter Events. All rights reserved.</p>
+            <p>© 2025 Enter Events. All rights reserved. Website by <a href="https://www.klevismiho.com" target="_blank" rel="noopener" style="color:#fff;">Klevis Miho</a>.</p>
         </div>
     </div>
 </footer>

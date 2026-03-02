@@ -49,7 +49,7 @@ get_header();
 
       <h2>HÖR BERLIN</h2>
 
-      <div id="youtube-playlist-1" class="video-grid"></div>
+      <div id="youtube-playlist-1" class="video-grid"></div>n
 
       <script>
         const API_KEY = "<?php echo esc_js(YOUTUBE_API_KEY); ?>";
@@ -59,7 +59,6 @@ get_header();
         fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=20&playlistId=${PLAYLIST_ID}&key=${API_KEY}`)
           .then(res => res.json())
           .then(data => {
-            console.log(data);
             data.items.forEach(item => {
               const videoId = item.snippet.resourceId.videoId;
               const title = item.snippet.title;
@@ -111,18 +110,31 @@ get_header();
   const canvas = document.getElementById('equalizer');
   const ctx = canvas.getContext('2d');
 
-  // Fix canvas scaling for crisp rendering
-  const dpr = window.devicePixelRatio || 1;
-  const rect = canvas.getBoundingClientRect();
-  canvas.width = rect.width * dpr;
-  canvas.height = rect.height * dpr;
-  ctx.scale(dpr, dpr);
-  canvas.style.width = rect.width + 'px';
-  canvas.style.height = rect.height + 'px';
+  // Defer canvas sizing until layout is ready
+  function resizeCanvas() {
+    const dpr = window.devicePixelRatio || 1;
+    const displayWidth = canvas.offsetWidth;
+    const displayHeight = canvas.offsetHeight;
+
+    if (displayWidth === 0 || displayHeight === 0) return;
+
+    canvas.width = displayWidth * dpr;
+    canvas.height = displayHeight * dpr;
+    ctx.scale(dpr, dpr);
+    canvas.style.width = displayWidth + 'px';
+    canvas.style.height = displayHeight + 'px';
+  }
+
+  // Run after layout, not immediately
+  window.addEventListener('load', resizeCanvas);
+  window.addEventListener('resize', () => {
+    ctx.setTransform(1, 0, 0, 1, 0, 0); // reset transform before rescaling
+    resizeCanvas();
+  });
 
   function initAudioContext() {
     if (!audioContext) {
-      audioContext = new(window.AudioContext || window.webkitAudioContext)();
+      audioContext = new (window.AudioContext || window.webkitAudioContext)();
       analyser = audioContext.createAnalyser();
       const source = audioContext.createMediaElementSource(audio);
 
@@ -140,23 +152,21 @@ get_header();
 
     analyser.getByteFrequencyData(dataArray);
 
+    const dpr = window.devicePixelRatio || 1;
     const canvasWidth = canvas.width / dpr;
     const canvasHeight = canvas.height / dpr;
 
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvasWidth, canvasHeight);
 
-    const barCount = Math.min(dataArray.length, 100); // Limit bars for better performance
-    const barWidth = Math.floor(canvasWidth / barCount) - 1; // Integer width for crisp bars
+    const barCount = Math.min(dataArray.length, 100);
+    const barWidth = Math.floor(canvasWidth / barCount) - 1;
     let x = 0;
 
     for (let i = 0; i < barCount; i++) {
-      const barHeight = Math.floor((dataArray[i] / 255) * canvasHeight); // Integer height
-
-      // Solid white for crisp bars
+      const barHeight = Math.floor((dataArray[i] / 255) * canvasHeight);
       ctx.fillStyle = 'white';
       ctx.fillRect(Math.floor(x), canvasHeight - barHeight, barWidth, barHeight);
-
       x += barWidth + 1;
     }
 
@@ -165,16 +175,27 @@ get_header();
 
   playBtn.addEventListener('click', async () => {
     try {
+      // iOS requires AudioContext to be created/resumed inside a user gesture
       initAudioContext();
       if (audioContext.state === 'suspended') {
         await audioContext.resume();
       }
+
+      // iOS Safari sometimes needs a fresh load of the stream
+      if (audio.readyState === 0) {
+        audio.load();
+      }
+
       await audio.play();
+
+      // Re-check canvas size in case it was zero at load time
+      resizeCanvas();
+
       drawEqualizer();
       playBtn.style.display = 'none';
       pauseBtn.style.display = 'inline-block';
     } catch (error) {
-      console.error('Error playing audio:', error);
+      console.error('Playback error:', error);
     }
   });
 

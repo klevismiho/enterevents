@@ -1,13 +1,13 @@
 <section class="section-latest-posts">
   <div class="container">
     <header class="section-header">
-      <h2>Latest Posts</h2>
+      <h2>Enter Magazine</h2>
       <p>From exclusive artist interviews to festival reviews and industry insights, our digital magazine keeps you in the know. Whether you’re a fan, artist, or industry insider, ENTER MAG provides news, stories, and features that connect you to the heart of the music scene.</p>
     </header>
     <div class="posts-grid">
       <?php
       $latest_posts = new WP_Query(array(
-        'posts_per_page' => 6,
+        'posts_per_page' => 3,
         'post_status'    => 'publish',
       ));
 
@@ -42,6 +42,9 @@
       <?php endwhile;
         wp_reset_postdata();
       endif; ?>
+    </div>
+    <div class="align-center">
+      <a href="/magazine" class="secondary button">Load More</a>
     </div>
   </div>
 </section>

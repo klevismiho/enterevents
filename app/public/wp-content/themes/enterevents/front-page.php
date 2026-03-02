@@ -8,6 +8,4 @@
 
 <?php get_template_part('partials/section-latest-posts'); ?>
 
-<?php get_template_part('partials/section-partners'); ?>
-
 <?php get_footer(); ?>

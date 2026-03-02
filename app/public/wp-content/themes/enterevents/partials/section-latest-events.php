@@ -18,7 +18,7 @@ if (!class_exists('WooCommerce')) {
 $args = array(
   'post_type' => 'product',
   'post_status' => 'publish',
-  'posts_per_page' => $posts_per_page,
+  'posts_per_page' => 6,
   'orderby' => 'date',
   'order' => 'DESC',
   'meta_query' => array(
@@ -27,8 +27,6 @@ $args = array(
       'compare' => 'EXISTS'
     )
   ),
-  // ------------------------------------------------
-  // Performance optimization: only get fields needed for the loop
   'fields' => '',
 );
 
@@ -43,8 +41,6 @@ if (!$products->have_posts()) {
 <section class="section-latest-events upcoming_cards" data-category="" data-ppp="<?php echo esc_attr($posts_per_page); ?>">
 
   <div class="container">
-
-    <h2>Latest Events</h2>
 
     <div class="events-grid">
       <?php
@@ -116,7 +112,9 @@ if (!$products->have_posts()) {
 
       <?php endwhile; ?>
     </div>
-
+    <div class="align-center">
+      <a href="/events" class="secondary button">Load More Events</a>
+    </div>
   </div>
 
 </section>

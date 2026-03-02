@@ -13,7 +13,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        order: -1; // This puts it at the top
+        order: -1;
     }
 
     .play-btn,
@@ -59,8 +59,14 @@
     }
 
     #equalizer {
-        border: 1px solid #333;
-        border-radius: 8px;
-        background: black;
+        display: none;
+
+        @include breakpoint(small) {
+            display: block;
+            width: 500px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background: black;
+        }
     }
 }

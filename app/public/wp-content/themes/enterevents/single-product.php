@@ -38,18 +38,6 @@
                 echo '</p>';
               }
 
-              // Event End Time
-              $event_hour_end = get_post_meta($post_id, 'WooCommerceEventsHourEnd', true);
-              $event_minutes_end = get_post_meta($post_id, 'WooCommerceEventsMinutesEnd', true);
-              if (!empty($event_hour_end)) {
-                echo '<p><strong>End time: </strong>' . esc_html($event_hour_end . ':' . $event_minutes_end) . ' ';
-                if (!empty($event_timezone)) {
-                  $timezone_abbr = date_create('now', timezone_open($event_timezone))->format('T');
-                  echo '<span class="fooevents-tab-timezone" title="' . esc_attr($event_timezone) . '">' . esc_html($timezone_abbr) . '</span>';
-                }
-                echo '</p>';
-              }
-
               // Event Venue
               $event_venue = get_post_meta($post_id, 'WooCommerceEventsLocation', true);
               if (!empty($event_venue)) {

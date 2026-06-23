@@ -1,0 +1,27 @@
+#vmw-coupon-wrap h3 {
+    margin: 0 0 10px;
+    color: #e60000;
+}
+
+.vmw-input-row {
+    display: flex;
+    gap: 10px;
+}
+
+.vmw-input-row input {
+    max-width: 200px;
+}
+
+#vmw-apply-btn {
+    background-color: #51f3d6;
+}
+
+.vmw-success {
+    color: #1e8449;
+    margin: 10px 0;
+}
+
+.vmw-error {
+    color: #c0392b;
+    margin: 10px 0;
+}

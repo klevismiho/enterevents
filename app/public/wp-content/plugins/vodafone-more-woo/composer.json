@@ -1,0 +1,16 @@
+{
+  "name": "vodafone-more-woo/plugin",
+  "description": "Vodafone More WooCommerce Plugin",
+  "require-dev": {
+    "automattic/vipwpcs": "^3.0"
+  },
+  "scripts": {
+    "lint:vip": "php -d memory_limit=512M vendor/bin/phpcs --standard=WordPress-VIP-Go . --ignore=vendor/*,node_modules/*,*.js,*.css --warning-severity=0",
+    "lint:vip-file": "php -d memory_limit=512M vendor/bin/phpcs --standard=WordPress-VIP-Go --warning-severity=0"
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  }
+}
